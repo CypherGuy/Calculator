@@ -8,59 +8,42 @@
 
 <body>
     <div class="calculator">
-        <input type="number" id="num1" placeholder="0">
+        <p type="number" id="answer">0</p>
         <br>
         <br>
         <div>
-            <button>AC</button>
-            <button>+/-</button>
-            <button>%</button>
-            <button>/</button>
+            <button id="clear">AC</button>
+            <button id="plus-minus">+/-</button>
+            <button id="%">%</button>
+            <button id="divide">/</button>
         </div>
         <div>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>*</button>
+            <button id="7">7</button>
+            <button id="8">8</button>
+            <button id="9">9</button>
+            <button id="multiply">*</button>
         </div>
         <div>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>-</button>
+            <button id="4">4</button>
+            <button id="5">5</button>
+            <button id="6">6</button>
+            <button id="subtract">-</button>
         </div>
         <div>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>+</button>
+            <button id="1">1</button>
+            <button id="2">2</button>
+            <button id="3">3</button>
+            <button id="add">+</button>
         </div>
         <div>
-            <button>00</button>
-            <button>0</button>
-            <button>.</button>
-            <button>=</button>
+            <button id="00">00</button>
+            <button id="0">0</button>
+            <button id=".">.</button>
+            <button id="equals">=</button>
         </div>
     </div>
 
-    <script>
-        function operate(a, b, operator) {
-            var result;
-            if (operator === '+') {
-                result = a + b;
-            } else if (operator === '-') {
-                result = a - b;
-            } else if (operator === '*') {
-                result = a * b;
-            } else if (operator === '/') {
-                if (b != 0) {
-                    result = a / b;
-                } else {
-                    result = "No.";
-                }
-            }
-            document.getElementById('result').innerHTML = result;
-        }
+    <script src="script.js">
     </script>
 </body>
 

@@ -28,7 +28,10 @@ border-radius: 10px;
     align-items: center;
 }
 
-.calculator input {
+.calculator p {
+    font-size: 20px;
+    color: #fff;
+    background-color: #5a5959;
     width: 100%
 }
 .calculator div button{
