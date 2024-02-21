@@ -3,57 +3,63 @@
 
 <head>
     <title>Simple Calculator</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
-    <input type="text" id="value1" placeholder="Enter first number">
-    <input type="text" id="value2" placeholder="Enter second number">
-
-    <br>
-    <button onclick="operate('+')">Add</button>
-    <button onclick="operate('-')">Subtract</button>
-    <button onclick="operate('*')">Multiply</button>
-    <button onclick="operate('/')">Divide</button>
-    <br>
-    <p id="result"></p>
+    <div class="calculator">
+        <input type="number" id="num1" placeholder="0">
+        <br>
+        <br>
+        <div>
+            <button>AC</button>
+            <button>+/-</button>
+            <button>%</button>
+            <button>/</button>
+        </div>
+        <div>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>*</button>
+        </div>
+        <div>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>-</button>
+        </div>
+        <div>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>+</button>
+        </div>
+        <div>
+            <button>00</button>
+            <button>0</button>
+            <button>.</button>
+            <button>=</button>
+        </div>
+    </div>
 
     <script>
-        function operate(operator) {
-            var a = Number(document.getElementById("value1").value);
-            var b = Number(document.getElementById("value2").value);
+        function operate(a, b, operator) {
             var result;
-
             if (operator === '+') {
-                result = add(a, b);
+                result = a + b;
             } else if (operator === '-') {
-                result = subtract(a, b);
+                result = a - b;
             } else if (operator === '*') {
-                result = multiply(a, b);
+                result = a * b;
             } else if (operator === '/') {
                 if (b != 0) {
-                    result = divide(a, b);
+                    result = a / b;
                 } else {
-                    result = "Cannot divide by zero";
+                    result = "No.";
                 }
             }
-
-            document.getElementById("result").innerHTML = result;
-        }
-
-        function add(a, b) {
-            return a + b;
-        }
-
-        function subtract(a, b) {
-            return a - b;
-        }
-
-        function multiply(a, b) {
-            return a * b;
-        }
-
-        function divide(a, b) {
-            return a / b;
+            document.getElementById('result').innerHTML = result;
         }
     </script>
 </body>
