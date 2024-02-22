@@ -1,16 +1,16 @@
 let answerBox = document.getElementById("answer");
-let operator = "";
-let a = "";
-let b = "";
+let currentOperator = "";
+let operandA = "";
+let operandB = "";
 let operatorPressed = false;
 let equalsPressed = false;
-let operation = ""
+let operation = "";
 
 let buttons = document.querySelectorAll("button");
 
 document.addEventListener("keydown", (event) => {
     const key = event.key;
-    console.log(key)
+    console.log(key);
     const button = document.getElementById(key);
     if (button) {
         button.click();
@@ -21,101 +21,87 @@ buttons.forEach(button => {
     button.addEventListener("click", () => {
         if (button.id === "clear") {
             clear();
-        } 
-
-        else if (button.id === "undo") {
+        } else if (button.id === "undo") {
             if (operatorPressed === false) {
-                a = a.substring(0,(a.length)-1)
-                answerBox.innerHTML = a;
+                operandA = operandA.substring(0, (operandA.length) - 1);
+                answerBox.innerHTML = operandA;
             } else {
-                b = b.substring(0, (a.length)-1)
-                answerBox.innerHTML = b
+                operandB = operandB.substring(0, (operandB.length) - 1);
+                answerBox.innerHTML = operandB;
             }
-        }
-
-        else if (button.id === "dot") {
-            if (operatorPressed === false) { // This ensures pressing the dot button won't reset it and seperates A/B
-                if (a.includes(".") === false) {
-                    a += ".";
-                    answerBox.innerHTML = a;
-                } 
+        } else if (button.id === "dot") {
+            if (operatorPressed === false) {
+                if (operandA.includes(".") === false) {
+                    operandA += ".";
+                    answerBox.innerHTML = operandA;
+                }
             } else {
-                if (b.includes(".") === false) {
-                    b += ".";
-                    answerBox.innerHTML = b;
+                if (operandB.includes(".") === false) {
+                    operandB += ".";
+                    answerBox.innerHTML = operandB;
                 }
             }
-        }
-        
-        
-        else if (button.id === "plus-minus") {
+        } else if (button.id === "plus-minus") {
             if (operatorPressed === false) {
-                a = -a;
-                answerBox.innerHTML = a;
+                operandA = -operandA;
+                answerBox.innerHTML = operandA;
             } else {
-                b = -b;
-                answerBox.innerHTML = b;
+                operandB = -operandB;
+                answerBox.innerHTML = operandB;
             }
         } else if (button.id === "√") {
             if (operatorPressed === false) {
-                a = Math.round(( Math.sqrt(a)+ Number.EPSILON) * 100) / 100;
-                answerBox.innerHTML = a;
+                operandA = Math.round((Math.sqrt(operandA) + Number.EPSILON) * 100) / 100;
+                answerBox.innerHTML = operandA;
             } else {
-                b = Math.round(( Math.sqrt(b)+ Number.EPSILON) * 100) / 100;
-                answerBox.innerHTML = b;
+                operandB = Math.round((Math.sqrt(operandB) + Number.EPSILON) * 100) / 100;
+                answerBox.innerHTML = operandB;
             }
         } else if (button.id === "1/x") {
             if (operatorPressed === false) {
-                a = Math.round((1/a + Number.EPSILON) * 100) / 100;
-                answerBox.innerHTML = a;
+                operandA = Math.round((1 / operandA + Number.EPSILON) * 100) / 100;
+                answerBox.innerHTML = operandA;
             } else {
-                b = Math.round((1/b + Number.EPSILON) * 100) / 100;
-                answerBox.innerHTML = b;
+                operandB = Math.round((1 / operandB + Number.EPSILON) * 100) / 100;
+                answerBox.innerHTML = operandB;
             }
-        }
-
-        else if (button.id === "Enter") {
+        } else if (button.id === "Enter") {
             equalsPressed = true;
-            console.log(operator);
-            console.log(a);
-            console.log(b);
-            b = operate(operator, Number(a), Number(b));
-            a = b; // Update 'a' to the result for potential further calculations
-            b = ""; // Reset 'b' after calculation
-        } 
-        
-        else if (button.id === "+" || button.id === "-" || button.id === "*" || button.id === "/" || button.id === "%" || button.id === "^" || button.id === "Log") {
-            console.log(a)
-            console.log(b)
-            
-            if (b.length === 0) {
-                operator = button.id;
+            console.log(currentOperator);
+            console.log(operandA);
+            console.log(operandB);
+            operandB = operate(currentOperator, Number(operandA), Number(operandB));
+            operandA = operandB;
+            operandB = "";
+        } else if (button.id === "+" || button.id === "-" || button.id === "*" || button.id === "/" || button.id === "%" || button.id === "^" || button.id === "Log") {
+            console.log(operandA);
+            console.log(operandB);
+
+            if (operandB.length === 0) {
+                currentOperator = button.id;
                 operatorPressed = true;
             } else {
-                a = operate(operator, Number(a), Number(b));
-                // Update 'a' to the result for potential further calculations
-                operator = button.id;
+                operandA = operate(currentOperator, Number(operandA), Number(operandB));
+                currentOperator = button.id;
                 operatorPressed = true;
-                b = ""; // Reset 'b' after calculation
+                operandB = "";
             }
-        } 
-        
-        else {
+        } else {
             if (operatorPressed === false) {
-                a += button.id;
-                answerBox.innerHTML = a;
+                operandA += button.id;
+                answerBox.innerHTML = operandA;
             } else {
-                b += button.id;
-                answerBox.innerHTML = b;
+                operandB += button.id;
+                answerBox.innerHTML = operandB;
             }
         }
     });
 });
 
 function clear() {
-    operator = "";
-    a = "";
-    b = "";
+    currentOperator = "";
+    operandA = "";
+    operandB = "";
     operatorPressed = false;
     equalsPressed = false;
     answerBox.innerHTML = "0";
@@ -135,11 +121,11 @@ function operate(operator, a, b) {
         result = Math.round(((a % b) + Number.EPSILON) * 100) / 100;
     } else if (operator === "^") {
         result = Math.round(((a ** b) + Number.EPSILON) * 100) / 100;
-    } else if (operator === "Log"){
+    } else if (operator === "Log") {
         result = Math.round(((Math.log(a) / Math.log(b)) + Number.EPSILON) * 100) / 100;
     }
     answerBox.innerHTML = result;
-    console.log(`After calculation, a = ${a} and b = ${b}`);
+    console.log(`After calculation, operandA = ${a} and operandB = ${b}`);
     operatorPressed = false;
     equalsPressed = false;
     return result;
@@ -170,12 +156,12 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    if(b != 0){
+    if (b != 0) {
         let num = a / b;
         if (isNaN(num)) {
             return "SyntaxError";
         }
-        return Math.round((num + Number.EPSILON) * 100) / 100
+        return Math.round((num + Number.EPSILON) * 100) / 100;
     } else {
         return "Tut tut.";
     }
