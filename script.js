@@ -21,6 +21,8 @@ buttons.forEach(button => {
     button.addEventListener("click", () => {
         if (button.id === "clear") {
             clear();
+
+        // 0 parameter operations
         } else if (button.id === "undo") {
             if (operatorPressed === false) {
                 operandA = operandA.substring(0, (operandA.length) - 1);
@@ -41,6 +43,7 @@ buttons.forEach(button => {
                     answerBox.innerHTML = operandB;
                 }
             }
+        // 1 parameter operations
         } else if (button.id === "plus-minus") {
             if (operatorPressed === false) {
                 operandA = -operandA;
@@ -73,6 +76,8 @@ buttons.forEach(button => {
             operandB = operate(currentOperator, Number(operandA), Number(operandB));
             operandA = operandB;
             operandB = "";
+
+        // 2 parameter operations
         } else if (button.id === "+" || button.id === "-" || button.id === "*" || button.id === "/" || button.id === "%" || button.id === "^" || button.id === "Log") {
             console.log(operandA);
             console.log(operandB);
@@ -118,6 +123,10 @@ function operate(operator, a, b) {
     } else if (operator === '/') {
         result = divide(a, b);
     } else if (operator === '%') {
+        moduloValue = a % b
+        if (moduloValue === b) {
+            result = 0;
+        }
         result = Math.round(((a % b) + Number.EPSILON) * 100) / 100;
     } else if (operator === "^") {
         result = Math.round(((a ** b) + Number.EPSILON) * 100) / 100;
