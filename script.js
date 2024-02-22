@@ -6,6 +6,16 @@ let operatorPressed = false;
 let equalsPressed = false;
 
 let buttons = document.querySelectorAll("button");
+
+document.addEventListener("keydown", (event) => {
+    const key = event.key;
+    console.log(key)
+    const button = document.getElementById(key);
+    if (button) {
+        button.click();
+    }
+});
+
 buttons.forEach(button => {
     button.addEventListener("click", () => {
         if (button.id === "clear") {
@@ -45,7 +55,7 @@ buttons.forEach(button => {
                 b = -b;
                 answerBox.innerHTML = b;
             }
-        } else if (button.id === "equals") {
+        } else if (button.id === "Enter") {
             equalsPressed = true;
             console.log(operator);
             console.log(a);
@@ -53,7 +63,7 @@ buttons.forEach(button => {
             b = operate(operator, Number(a), Number(b));
             a = b; // Update 'a' to the result for potential further calculations
             b = ""; // Reset 'b' after calculation
-        } else if (button.id === "add" || button.id === "subtract" || button.id === "multiply" || button.id === "divide" || button.id === "modulo") {
+        } else if (button.id === "+" || button.id === "-" || button.id === "*" || button.id === "/" || button.id === "%") {
             console.log(a)
             console.log(b)
             
@@ -90,15 +100,15 @@ function clear() {
 
 function operate(operator, a, b) {
     let result;
-    if (operator === 'add') {
+    if (operator === '+') {
         result = add(a, b);
-    } else if (operator === 'subtract') {
+    } else if (operator === '=') {
         result = subtract(a, b);
-    } else if (operator === 'multiply') {
+    } else if (operator === '*') {
         result = multiply(a, b);
-    } else if (operator === 'divide') {
+    } else if (operator === '/') {
         result = divide(a, b);
-    } else if (operator === 'modulo') {
+    } else if (operator === '%') {
         result = a % b;
     }
     answerBox.innerHTML = result;
