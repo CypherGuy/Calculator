@@ -1,6 +1,8 @@
 # JavaScript Calculator
 
-This is a simple calculator implemented in HTML, CSS, and JavaScript. It provides a user-friendly interface for performing basic arithmetic operations.
+This is a simple calculator implemented in HTML, CSS, and JavaScript. It provides a user-friendly interface for performing basic arithmetic operations, and you can use your keyboard too!
+
+This is the final project for The Odin Project.
 
 ## Features
 
