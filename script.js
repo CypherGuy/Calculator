@@ -4,6 +4,7 @@ let a = "";
 let b = "";
 let operatorPressed = false;
 let equalsPressed = false;
+let operation = ""
 
 let buttons = document.querySelectorAll("button");
 
@@ -55,7 +56,25 @@ buttons.forEach(button => {
                 b = -b;
                 answerBox.innerHTML = b;
             }
-        } else if (button.id === "Enter") {
+        } else if (button.id === "√") {
+            if (operatorPressed === false) {
+                a = Math.round(( Math.sqrt(a)+ Number.EPSILON) * 100) / 100;
+                answerBox.innerHTML = a;
+            } else {
+                b = Math.round(( Math.sqrt(b)+ Number.EPSILON) * 100) / 100;
+                answerBox.innerHTML = b;
+            }
+        } else if (button.id === "1/x") {
+            if (operatorPressed === false) {
+                a = Math.round((1/a + Number.EPSILON) * 100) / 100;
+                answerBox.innerHTML = a;
+            } else {
+                b = Math.round((1/b + Number.EPSILON) * 100) / 100;
+                answerBox.innerHTML = b;
+            }
+        }
+
+        else if (button.id === "Enter") {
             equalsPressed = true;
             console.log(operator);
             console.log(a);
@@ -63,7 +82,9 @@ buttons.forEach(button => {
             b = operate(operator, Number(a), Number(b));
             a = b; // Update 'a' to the result for potential further calculations
             b = ""; // Reset 'b' after calculation
-        } else if (button.id === "+" || button.id === "-" || button.id === "*" || button.id === "/" || button.id === "%") {
+        } 
+        
+        else if (button.id === "+" || button.id === "-" || button.id === "*" || button.id === "/" || button.id === "%" || button.id === "^" || button.id === "Log") {
             console.log(a)
             console.log(b)
             
@@ -77,7 +98,9 @@ buttons.forEach(button => {
                 operatorPressed = true;
                 b = ""; // Reset 'b' after calculation
             }
-        } else {
+        } 
+        
+        else {
             if (operatorPressed === false) {
                 a += button.id;
                 answerBox.innerHTML = a;
@@ -102,14 +125,18 @@ function operate(operator, a, b) {
     let result;
     if (operator === '+') {
         result = add(a, b);
-    } else if (operator === '=') {
+    } else if (operator === '-') {
         result = subtract(a, b);
     } else if (operator === '*') {
         result = multiply(a, b);
     } else if (operator === '/') {
         result = divide(a, b);
     } else if (operator === '%') {
-        result = a % b;
+        result = Math.round(((a % b) + Number.EPSILON) * 100) / 100;
+    } else if (operator === "^") {
+        result = Math.round(((a ** b) + Number.EPSILON) * 100) / 100;
+    } else if (operator === "Log"){
+        result = Math.round(((Math.log(a) / Math.log(b)) + Number.EPSILON) * 100) / 100;
     }
     answerBox.innerHTML = result;
     console.log(`After calculation, a = ${a} and b = ${b}`);

@@ -16,10 +16,11 @@ body {
     align-items: center;
 }
 
-.calculator { /* Calculator edge */
+.calculator { /* Calculator edge and inside*/
 border: 5px solid #000;
-padding: 40px;
+padding: 20px;
 border-radius: 10px;
+background-color: #349d9f  ;
 }
 
 .calculator div {
@@ -36,13 +37,18 @@ border-radius: 10px;
     width: 100%
 }
 
+button.keyOperation {
+    background-color: #f2a365;
+    color: #fff;
+
+}
 .equalsButton { /* Only ==== */
     width: 95%;
     height: 50px;
     font-size: 40px;
 }
 
-.calculator div button{ /* All but ==== */
+.notEquals{ /* All but ==== */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,10 +59,20 @@ border-radius: 10px;
     font-size: 30px;
 }
 
-.calculator button { /* All including ==== */
+.allButtons { /* All including ==== */
     margin: 10px;
     background-color: #5a5959;
     color: #fff;
     border: none;
     cursor: pointer;
 }
+
+.allButtons:hover {
+    background-color: #295953;
+}
+
+.entryDeletion {
+    background-color: #36766f;
+}
+
+

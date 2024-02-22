@@ -5,6 +5,7 @@
     <title>Simple Calculator</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+<!-- Log10, Sqrt, Power, Round -->
 
 <body>
     <div class="calculator">
@@ -12,38 +13,45 @@
         <br>
         <br>
         <div>
-            <button id="clear">AC</button>
-            <button id="undo">DEL</button>
-            <button id="plus-minus">+/-</button>
-            <button id="%">%</button>
+            <button id="clear" class="notEquals allButtons entryDeletion">AC</button>
+            <button id="undo" class="notEquals allButtons entryDeletion">DEL</button>
+            <button id="√" class="notEquals allButtons">√</button>
+            <button id="^" class="keyOperation notEquals allButtons">^</button>
 
         </div>
         <div>
-            <button id="7">7</button>
-            <button id="8">8</button>
-            <button id="9">9</button>
-            <button id="/">/</button>
+            <button id="1/x" class="notEquals allButtons">1/x</button>
+            <button id="Log" class="notEquals allButtons">Logn</button>
+            <button id="plus-minus" class="notEquals allButtons">+/-</button>
+            <button id="%" class="keyOperation notEquals allButtons">%</button>
+
         </div>
         <div>
-            <button id="4">4</button>
-            <button id="5">5</button>
-            <button id="6">6</button>
-            <button id="*">*</button>
+            <button id="7" class="notEquals allButtons">7</button>
+            <button id="8" class="notEquals allButtons">8</button>
+            <button id="9" class="notEquals allButtons">9</button>
+            <button id="/" class="keyOperation notEquals allButtons">/</button>
         </div>
         <div>
-            <button id="1">1</button>
-            <button id="2">2</button>
-            <button id="3">3</button>
-            <button id="-">-</button>
+            <button id="4" class="notEquals allButtons">4</button>
+            <button id="5" class="notEquals allButtons">5</button>
+            <button id="6" class="notEquals allButtons">6</button>
+            <button id="*" class="keyOperation notEquals allButtons">*</button>
         </div>
         <div>
-            <button id="00">00</button>
-            <button id="0">0</button>
-            <button id="dot">.</button>
-            <button id="+">+</button>
+            <button id="1" class="notEquals allButtons">1</button>
+            <button id="2" class="notEquals allButtons">2</button>
+            <button id="3" class="notEquals allButtons">3</button>
+            <button id="-" class="keyOperation notEquals allButtons">-</button>
+        </div>
+        <div>
+            <button id="00" class="notEquals allButtons">00</button>
+            <button id="0" class="notEquals allButtons">0</button>
+            <button id="dot" class="notEquals allButtons">.</button>
+            <button id="+" class="keyOperation notEquals allButtons">+</button>
         </div>
         <br>
-        <button id="Enter" class="equalsButton">=</button>
+        <button id="Enter" class="equalsButton allButtons">=</button>
     </div>
 
     <script src="script.js">
