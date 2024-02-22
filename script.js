@@ -10,7 +10,24 @@ buttons.forEach(button => {
     button.addEventListener("click", () => {
         if (button.id === "clear") {
             clear();
-        } else if (button.id === "plus-minus") {
+        } 
+
+        else if (button.id === "dot") {
+            if (operatorPressed === false) { // This ensures pressing the dot button won't reset it
+                if (a.includes(".") === false) {
+                    a += ".";
+                    answerBox.innerHTML = a;
+                } 
+            } else {
+                if (b.includes(".") === false) {
+                    b += ".";
+                    answerBox.innerHTML = b;
+                }
+            }
+        }
+        
+        
+        else if (button.id === "plus-minus") {
             if (operatorPressed === false) {
                 a = -a;
                 answerBox.innerHTML = a;
