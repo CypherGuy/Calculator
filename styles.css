@@ -69,6 +69,8 @@ button.keyOperation {
 
 .allButtons:hover {
     background-color: #295953;
+    box-shadow:
+    0 0 10px 10px #fff
 }
 
 .entryDeletion {
