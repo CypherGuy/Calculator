@@ -12,8 +12,18 @@ buttons.forEach(button => {
             clear();
         } 
 
+        else if (button.id === "undo") {
+            if (operatorPressed === false) {
+                a = a.substring(0,(a.length)-1)
+                answerBox.innerHTML = a;
+            } else {
+                b = b.substring(0, (a.length)-1)
+                answerBox.innerHTML = b
+            }
+        }
+
         else if (button.id === "dot") {
-            if (operatorPressed === false) { // This ensures pressing the dot button won't reset it
+            if (operatorPressed === false) { // This ensures pressing the dot button won't reset it and seperates A/B
                 if (a.includes(".") === false) {
                     a += ".";
                     answerBox.innerHTML = a;
